@@ -1,3 +1,18 @@
+// Smoke Sensor (MQ-5):
+// VCC → 5V
+// GND → GND
+// AO (analog output) → A0 on Arduino
+// Fire Sensor:
+// VCC → 5V
+// GND → GND
+// D0 (digital output) → D2 on Arduino
+// Buzzer:
+// Positive (+) → D8 on Arduino
+// Negative (-) → GND
+// LCD (I2C):
+// SDA → A4 (on Arduino)
+// SCL → A5 (on Arduino)
+  
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 
