@@ -1,0 +1,9 @@
+DHT11 Data	Digital Pin 2
+Soil Moisture A0	Analog Pin A0
+Rain Sensor D0	Digital Pin 7
+Ultrasonic TRIG	Digital Pin 5
+Ultrasonic ECHO	Digital Pin 4
+Servo Signal	Digital Pin 9
+Buzzer Positive	Digital Pin 8
+I2C LCD SDA	Analog Pin A4
+I2C LCD SCL	Analog Pin A5
