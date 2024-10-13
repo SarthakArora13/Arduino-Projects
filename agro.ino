@@ -25,6 +25,7 @@
 DHT dht(DHTPIN, DHTTYPE);
 Servo myServo;
 LiquidCrystal_I2C lcd(0x27, 16, 2);
+int pos = 0; // Variable to store the servo position
 
 void setup() {
   // Initialize sensors and components
@@ -39,7 +40,6 @@ void setup() {
   pinMode(BUZZER_PIN, OUTPUT);
   
   myServo.attach(SERVO_PIN);
-  myServo.write(90); // Start servo at 90 degrees
   
   lcd.setCursor(0, 0);
   lcd.print("System Init...");
@@ -47,6 +47,17 @@ void setup() {
 }
 
 void loop() {
+  // Sweep the servo motor between 0 and 180 degrees continuously
+  for (pos = 0; pos <= 180; pos += 1) { 
+    myServo.write(pos); // Move the servo to the current position
+    delay(15);          // Delay to give the servo time to move
+  }
+  
+  for (pos = 180; pos >= 0; pos -= 1) { 
+    myServo.write(pos); // Move the servo back
+    delay(15);          // Delay to give the servo time to move
+  }
+
   // Read sensors
   float humidity = dht.readHumidity();
   float temperature = dht.readTemperature();
@@ -87,9 +98,6 @@ void loop() {
   }
 
   // Check for object using ultrasonic sensor
-  myServo.write(90); // Servo at 90 degrees
-  delay(500);
-
   if (distance < DISTANCE_THRESHOLD) {
     // Obstacle detected, sound buzzer and show alert
     tone(BUZZER_PIN, 1000); // Buzzer on
